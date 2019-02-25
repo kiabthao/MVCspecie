@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmln0s:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <link rel="stylesheet" th:href="@{/resources/css/main.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    
+</head>
+<script th:with="js=#{js_alert}">
+	function checkDelete(id) {
+	//	if(confirm("do you want to delete this specie ?")) {
+		if(confirm('[[${js}]]')) {
+			window.location.replace("/delete/" + id );
+		}else {
+			return;
+		}
+		
+	}
+	
+</script>
+<body>
+
+   <!--   <p th:text="'Hello, ' + ${machin} + '!'" /> --> 
+   
+   <h2> Especes</h2>
+   <span th:text="#{bonjour}"></span><br>
+   <span th:text="#{au_revoir}"></span><br>
+   <br>
+   <table class="mainTable">
+   <thead>
+  <tr>
+  <th>id</th>
+ <th>common name</th>
+  <th>latin name</th>  
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="specie : ${listSpecie}">
+  <td th:text="${specie.id}"/>
+  <td th:text="${specie.commonName}"/>
+  <td th:text="${specie.latinName}"/>
+  <td width="30"><a th:href="@{'update/' +${specie.id}}"><img style="width 50px; height: 30px;"th:src="@{/resources/img/edit.png}"/></a></td>
+  <td width="30"><a th:href="'javascript:checkDelete(' +${specie.id}+');'"><img style="width 50px; height: 30px;"
+  th:src="@{/resources/img/delete.png}"/></a></td>
+  </tr>
+  
+  
+  </tbody>
+   </table>
+   <br>
+   
+   
+   <input type="submit" id=button value="Creer" onclick="window.location='/species/create'">
+  
+</body>
+</html>

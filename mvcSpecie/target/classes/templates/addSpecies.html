@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Species</title>
+<link rel="stylesheet" th:href="@{/resources/css/main.css}" />
+</head>
+<body>
+
+<span th:text="#{bonjour}"></span><br>
+<span th:text="#{au_revoir}"></span><br>
+<span th:text="#{que_voulez_vous}"></span><br>
+<span th:text="#{aides}"></span><br>
+<span th:text="#{svp}"></span><br>
+<span th:text="#{java}"></span><br>
+<br>
+	<form th:object="${specie}" th:action="@{/species/create}" method="post">
+		<input type="text" th:field="*{commonName}" /><br /> 
+		<input type="text"th:field="*{latinName}" /><br /> 
+		<input type="submit" class="button" th:value="Save" />
+		<input type="hidden"th:field="*{id}" /><br /> 
+	</form>
+
+</body>
+</html>
